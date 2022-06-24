@@ -1,5 +1,6 @@
 <script lang="ts">
   import CodeMirror from "$lib/components/CodeMirror.svelte";
+  import ProseMirror from "$lib/components/ProseMirror/index.svelte";
 
   const doc = `
 # Heading 1
@@ -51,11 +52,12 @@ Repellendus, praesentium adipisci laborum dignissimos a perspiciatis veniam arch
   </div>
 
   <div class="textBlock">
-    {#if lines.length > 0}
+    <!-- {#if lines.length > 0}
       {#each lines as line}
         <p>{line}</p>
       {/each}
-    {/if}
+    {/if} -->
+    <ProseMirror {doc} />
   </div>
 </div>
 
@@ -65,7 +67,6 @@ Repellendus, praesentium adipisci laborum dignissimos a perspiciatis veniam arch
     position: relative;
     float: left;
     font-family: "Comic Sans MS", cursive;
-    border: 2px solid red;
     margin: 1em;
     padding: 0.5em;
   }

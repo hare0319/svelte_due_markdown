@@ -32,6 +32,13 @@
 	"dependencies": {
 		"@codemirror/lang-markdown": "^6.0.0",
 		"@codemirror/language-data": "^6.1.0",
-		"codemirror": "^6.0.0"
+		"codemirror": "^6.0.0",
+		"prosemirror-example-setup": "^1.2.1",
+		"prosemirror-markdown": "^1.9.1",
+		"prosemirror-model": "^1.18.1",
+		"prosemirror-schema-basic": "^1.2.0",
+		"prosemirror-schema-list": "^1.2.0",
+		"prosemirror-state": "^1.4.1",
+		"prosemirror-view": "^1.26.2"
 	}
 }

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { basicSetup, EditorView } from "codemirror";
   import { createEventDispatcher, onMount } from "svelte";
+  import { markdown } from "@codemirror/lang-markdown";
+  import { languages } from "@codemirror/language-data";
 
   export let doc: string;
   let cmEditor: HTMLElement;
@@ -9,7 +11,11 @@
   onMount(() => {
     const ev = new EditorView({
       doc,
-      extensions: [basicSetup, EditorView.lineWrapping],
+      extensions: [
+        basicSetup,
+        EditorView.lineWrapping,
+        markdown({ codeLanguages: languages }),
+      ],
       parent: cmEditor,
       dispatch: (tr) => {
         ev.update([tr]);
