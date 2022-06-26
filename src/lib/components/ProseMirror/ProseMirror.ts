@@ -10,12 +10,22 @@ import { exampleSetup } from "prosemirror-example-setup";
 export class ProseMirrorView {
   view: EditorView;
 
-  constructor(target: HTMLElement, content: string) {
+  constructor(
+    target: HTMLElement,
+    content: string,
+    evtSetter: (v: Record<string, string>) => void
+  ) {
     this.view = new EditorView(target, {
       state: EditorState.create({
         doc: defaultMarkdownParser.parse(content) ?? undefined,
         plugins: exampleSetup({ schema }),
       }),
+      dispatchTransaction: (tr) => {
+        this.view.updateState(this.view.state.apply(tr));
+        evtSetter({
+          doc: this.content,
+        });
+      },
     });
   }
 
@@ -23,11 +33,4 @@ export class ProseMirrorView {
     return defaultMarkdownSerializer.serialize(this.view.state.doc);
   }
 
-  focus() {
-    this.view.focus();
-  }
-
-  destroy() {
-    this.view.destroy;
-  }
 }
