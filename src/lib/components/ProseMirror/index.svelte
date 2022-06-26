@@ -20,3 +20,9 @@
 </script>
 
 <div id="pmEditor" bind:this={pmEditor} />
+
+<style>
+  :global([contenteditable]:focus) {
+    outline: none;
+  }
+</style>
